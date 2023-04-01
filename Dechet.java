@@ -1,7 +1,7 @@
 import java.util.*;
 public class Dechet {
-   private String type;
-	private double poids;
+   	private String type;
+	private Double poids;
 	private Poubelle poubelleContientDechet;
 	private depot depot;
 	private ArrayList<String> listeTypeDechet= new ArrayList<>();
