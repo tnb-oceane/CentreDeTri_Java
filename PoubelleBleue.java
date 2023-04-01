@@ -2,58 +2,44 @@ package classes_projet;
 import java.util.*;
 
 public class PoubelleBleue extends PoubelleIntelligente {
-	
-    public PoubelleBleue(CentreDeTri centre, long latitude, long longitude, String quartier, double capacitéMaxTotal,
-			double capacitéActuelleTotal, double capacitéMaxPapier, double capacitéActuellePapier) {
-		super(centre, latitude, longitude, quartier, capacitéMaxTotal, capacitéActuelleTotal);
-		this.capacitéMaxPapier = capacitéMaxPapier;
-		this.capacitéActuellePapier = capacitéActuellePapier;
+
+    
+    public PoubelleBleue(CentreDeTri centre, long latitude, long longitude, String quartier, double capacitéMaxTotal) {
+		super(centre, latitude, longitude, quartier, capacitéMaxTotal);
+		// TODO Auto-generated constructor stub
 	}
-    
 
-	private double capacitéMaxPapier;
 
-    private double capacitéActuellePapier;
-    
-    private static TypeDéchet typeDéchetAcceptéBleue = TypeDéchet.PAPIER;
+	private static TypeDéchet typeDéchetAcceptéBleue = TypeDéchet.PAPIER;
 	
 	
-    
-    
-    public double getCapacitéMaxPapier() {
-        return this.capacitéMaxPapier;
-    }
-
-    public double getCapacitéActuellePapier() {
-        return this.capacitéActuellePapier;
-    }
 
 	public static TypeDéchet getTypeDéchetAccepté() {
 		return typeDéchetAcceptéBleue;
 	}
 	
-
+	
+	
 	@Override
-	public double calculQuantité(Dépot depot, String typeDechet) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int verifierTypeDechet(Dépot depot) {
-		int compteurPénalité=0;
-		for(Déchet d: depot.getListeDechets()) {
+	public double verifierTypeDechet(ArrayList<Déchet> listeDechet) {
+		double compteurPénalité=0;
+		double point=0;
+		for(Déchet d: listeDechet) {
 			if (!d.getType().equals(typeDéchetAcceptéBleue)) {
-				compteurPénalité+=1;/*A changer en fonction de la pénalité*/
+				compteurPénalité+=d.getPoids();
+			}
+			else {
+				point++;
 			}
 		}
-		return compteurPénalité;
+		return (point - compteurPénalité);
 	}
 
 	@Override
-	public boolean attribuerPoint(Ménage ménage, int points) {
-		// TODO Auto-generated method stub
-		return false;
+	public int attribuerPoint(ArrayList<Déchet> listeDechet) {
+		double point = this.verifierTypeDechet(listeDechet)*this.centredetri.getPointParGrammeDechet();
+		return (int)point;
 	}
+	
 
 }

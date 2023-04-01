@@ -1,35 +1,52 @@
 package classes_projet;
-import java.util.*;
 
 public class Déchet {
 	
-	
+	private TypeDéchet type;
 
+    private double poids;
+    
+    private PoubelleIntelligente poubelleContientDechet;
+	
+    private Dépot depot;
+    
+    private CentreDeTri centredetri;
+    
+    
 	public Déchet(TypeDéchet type, double poids) {
 		super();
 		this.type = type;
 		this.poids = poids;
+		this.poubelleContientDechet = null;
+		this.depot = null;	
+		this.centredetri=null;
 	}
 
-	private TypeDéchet type;
-
-    private double poids;
 
 	public TypeDéchet getType() {
 		return type;
 	}
 
-	public void setType(TypeDéchet type) {
-		this.type = type;
-	}
 
 	public double getPoids() {
 		return poids;
 	}
 
-	public void setPoids(double poids) {
-		this.poids = poids;
-	}    
+
+	public PoubelleIntelligente getPoubelleContientDechet() {
+		return poubelleContientDechet;
+	}
+
+
+	public Dépot getDepot() {
+		return depot;
+	}
+
+
+	public CentreDeTri getCentredetri() {
+		return centredetri;
+	}
+	
     
   
 }
