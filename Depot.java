@@ -5,6 +5,7 @@ public class Depot {
     private int poubelle;
     private Date heure = new Date();
     private double quantiteDeDechet;
+    private int pointGagné;
     private ArrayList<String> dechetDepose = new ArrayList<>();
     private long suivi_identifiant;
     
