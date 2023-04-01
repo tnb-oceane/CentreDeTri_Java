@@ -12,7 +12,7 @@ public class Menage {
     private ArrayList<Achat> listeAchats;
 
 
-    // Constructor
+    // Constructor 
     public Menage(String motDePasse, int codeAcces, Commerce commerce) {
         this.identifiant = getSuiviIdentifiant();
         this.motDePasse = motDePasse;
@@ -64,7 +64,7 @@ public class Menage {
       this.listeBons = listeBons;
   }
 
-  // Implement these methods based on your application logic
+  //
   public ArrayList<Achat> getListeAchats() {
       return new ArrayList<>();
   }
