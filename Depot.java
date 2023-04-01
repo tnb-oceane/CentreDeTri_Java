@@ -1,4 +1,4 @@
-
+import java.util.*;
 public class Depot {
     private int id;
     private int menage;
