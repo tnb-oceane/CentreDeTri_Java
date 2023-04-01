@@ -1,4 +1,4 @@
-
+import java.util*;
 public class Dechet {
    private String type;
 	private double poids;
