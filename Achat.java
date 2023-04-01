@@ -2,15 +2,15 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Achat {
-    private String identifiant;
+    private long identifiant;
     private double prixDépart;
     private double prixFinal;
     private Date date;
-    private Menage menage;
+    private Ménage menage;
     private Commerce commerce;
     private ArrayList<Bon> listeBonsUtilisés;
 
-    public Achat(String identifiant, double prixDépart, double prixFinal, Date date, Menage menage, Commerce commerce) {
+    public Achat(long identifiant, double prixDépart, double prixFinal, Date date, Ménage menage, Commerce commerce) {
         this.identifiant = identifiant;
         this.prixDépart = prixDépart;
         this.prixFinal = prixFinal;
@@ -20,7 +20,7 @@ public class Achat {
         this.listeBonsUtilisés = new ArrayList<>();
     }
 
-    public String getIdentifiant() {
+    public long getIdentifiant() {
         return identifiant;
     }
 
@@ -36,7 +36,7 @@ public class Achat {
         return date;
     }
 
-    public Menage getMenage() {
+    public Ménage getMenage() {
         return menage;
     }
 
@@ -45,10 +45,10 @@ public class Achat {
     }
 
     public ArrayList<Bon> getListeBonsUtilisés() {
-      return listeBonsUtilisés;
-  }
+        return listeBonsUtilisés;
+    }
 
-  public void ajouterBonUtilisé(Bon bon) {
+    public void ajouterBonUtilisé(Bon bon) {
       if (!listeBonsUtilisés.contains(bon)) {
           listeBonsUtilisés.add(bon);
           double remise = bon.getValeur();
@@ -58,7 +58,7 @@ public class Achat {
           }
       }
   }
-
+  
   public void retirerBonUtilisé(Bon bon) {
       if (listeBonsUtilisés.contains(bon)) {
           listeBonsUtilisés.remove(bon);
@@ -66,7 +66,7 @@ public class Achat {
           prixFinal += remise;
       }
   }
-
+  
   public void appliquerBonsUtilisés() {
       double remiseTotale = 0;
       for (Bon bon : listeBonsUtilisés) {
@@ -77,5 +77,14 @@ public class Achat {
           prixFinal = 0;
       }
   }
-}
+  
+  public static ArrayList<Achat> getListeAchats() {
+      return new ArrayList<>();
+  }
+  
+  public static long getSuivantIdentifiant() {
+      return 0L;
 
+      
+  }
+}  
