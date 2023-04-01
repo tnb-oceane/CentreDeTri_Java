@@ -1,19 +1,19 @@
 import java.util.ArrayList;
 
-public class Menage {
+public class Ménage {
     private long identifiant;
     private String motDePasse;
     private int codeAcces;
     private int point;
     private ArrayList<Bon> listeBons;
     private Commerce commerce;
-    private ArrayList<Poubelle> listePoubelles;
+    private ArrayList<PoubelleIntelligente> listePoubelles;
     private static long suiviIdentifiant = 0;
     private ArrayList<Achat> listeAchats;
 
 
-    // Constructor 
-    public Menage(String motDePasse, int codeAcces, Commerce commerce) {
+    // Constructor des attruibtes 
+    public Ménage(String motDePasse, int codeAcces, Commerce commerce) {
         this.identifiant = getSuiviIdentifiant();
         this.motDePasse = motDePasse;
         this.codeAcces = codeAcces;
@@ -72,11 +72,11 @@ public class Menage {
   public void setListeAchats(ArrayList<Achat> listeAchats) {
   }
 
-  public ArrayList<Depot> getListeDepots() {
+  public ArrayList<Dépot> getListeDepots() {
       return new ArrayList<>();
   }
 
-  public void setListeDepots(ArrayList<Depot> listeDepots) {
+  public void setListeDepots(ArrayList<Dépot> listeDepots) {
   }
 
   public boolean creerCompte(String motDePasse) {
@@ -121,11 +121,11 @@ public boolean utiliserBon(int idBon, int idAchat) {
     return false;
 }
 
-public boolean jeterDechet(ArrayList<Dechet> dechets) {
+public boolean jeterDechet(ArrayList<Déchet> dechets) {
   // Ajoutez des objets Déchet à la Poubelle associée et mettez à jour les points.
   CentreDeTri centreDeTri = getCentreDeTri();
-  for (Dechet dechet : dechets) {
-      Poubelle poubelle = centreDeTri.getPoubelleByType(dechet.getType());
+  for (Déchet dechet : dechets) {
+      PoubelleIntelligente poubelle = centreDeTri.getPoubelleByType(dechet.getType());
       if (poubelle != null) {
           poubelle.ajouterDechet(dechet);
           this.point += dechet.getPoints();
@@ -151,16 +151,19 @@ public void setCommerce(Commerce commerce) {
   this.commerce = commerce;
 }
 
-public ArrayList<Poubelle> getListePoubelles() {
+public ArrayList<PoubelleIntelligente> getListePoubelles() {
   return listePoubelles;
 }
 
-public void setListePoubelles(ArrayList<Poubelle> listePoubelles) {
+public void setListePoubelles(ArrayList<PoubelleIntelligente> listePoubelles) {
   this.listePoubelles = listePoubelles;
 }
-
-
 }
+
+
+
+   
+
 
 
 
