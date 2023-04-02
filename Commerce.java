@@ -11,7 +11,7 @@ public class Commerce
     private ArrayList<Menage> listeMenages;
     private ArrayList<Achat> listeAchats;
 
-    public Commerce2(String nom, ArrayList<String> listeCategorieProduitVendu) 
+    public Commerce(String nom, ArrayList<String> listeCategorieProduitVendu) 
     {
         this.nom = nom; //Lorsqu'un objet Commerce est créé, nous passons un nom en paramètre au constructeur. Pour stocker cette valeur dans l'attribut "nom" de l'objet courant, nous utilisons l'instruction this.nom = nom;.
         this.listeCategorieProduitVendu = listeCategorieProduitVendu; //de même pour listeCategorieProduitVendu
