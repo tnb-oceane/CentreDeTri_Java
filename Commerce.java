@@ -7,6 +7,9 @@ public class Commerce
     private ArrayList<String> listeCategorieProduitVendu;
     private ArrayList<Contrat> listeContrats; //dans la classe Commerce, nous stockons une liste des contrats associés à ce commerce, car un commerce peut avoir plusieurs contrats avec le centre de tri.
     private ArrayList<Bon> listeBons; // nous stockons une liste des bons publiés par ce commerce
+    private CentreDeTri centreTri;
+    private ArrayList<Menage> listeMenages;
+    private ArrayList<Achat> listeAchats;
 
     public Commerce2(String nom, ArrayList<String> listeCategorieProduitVendu) 
     {
