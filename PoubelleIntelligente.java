@@ -117,7 +117,12 @@ public abstract class PoubelleIntelligente {
 	public void setPlacer(boolean placer) {
 		this.placer = placer;
 	}
+	
 
+
+	public void setCapacitéActuelleTotal(double capacitéActuelleTotal) {
+		CapacitéActuelleTotal = capacitéActuelleTotal;
+	}
 
 
 

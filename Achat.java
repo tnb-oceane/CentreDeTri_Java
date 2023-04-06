@@ -3,23 +3,6 @@ import java.util.*;
 
 public class Achat {
 	
-	public Achat(double prixDépart, Ménage menage, Commerce commerce) {
-       
-		this.identifiant = suiviIdentifiant;
-        this.prixDépart = prixDépart;
-        this.prixFinal = prixDépart;
-        this.date = new Date();
-        this.menage = menage;
-        this.commerce = commerce;
-        this.listeBonsUtilisés = new ArrayList<Bon>();
-        
-        suiviIdentifiant++;
-        
-        this.menage.getListeAchats().add(this);
-        //this.commerce.getListeAchats().add(this);
-        
-    }
-	
 	
     private long identifiant;
     
@@ -36,9 +19,25 @@ public class Achat {
     private ArrayList<Bon> listeBonsUtilisés;
     
     protected static long suiviIdentifiant = 1;
+    
+    
+    public Achat(double prixDépart, Ménage menage, Commerce commerce) {
+        
+		this.identifiant = suiviIdentifiant;
+        this.prixDépart = prixDépart;
+        this.prixFinal = prixDépart;
+        this.date = new Date();
+        this.menage = menage;
+        this.commerce = commerce;
+        this.listeBonsUtilisés = new ArrayList<Bon>();
+        
+        suiviIdentifiant++;
+        
+        this.menage.getListeAchats().add(this);
+        this.commerce.getListeAchats().add(this);       
+    }
 
    
-
     public long getIdentifiant() {
         return identifiant;
     }
@@ -73,16 +72,6 @@ public class Achat {
     
     
     
-   /* public void ajouterBonUtilisé(Bon bon) {
-        if (!listeBonsUtilisés.contains(bon)) {
-            listeBonsUtilisés.add(bon);
-            double remise = bon.getValeur();
-            prixFinal -= remise;
-            if (prixFinal < 0) {
-                prixFinal = 0;
-            }
-        }
-    }*/ //J'ai modifié legerement la fonction pour quelle modifie le prix final en fonction du type de Bon
     public void ajouterBonUtilisé(Bon bon) {
       if (!listeBonsUtilisés.contains(bon)) {
           listeBonsUtilisés.add(bon);
@@ -101,25 +90,15 @@ public class Achat {
           }
       }
     }
-  
-  /*public void retirerBonUtilisé(Bon bon) {
-      if (listeBonsUtilisés.contains(bon)) {
-          listeBonsUtilisés.remove(bon);
-          double remise = bon.getValeur();
-          prixFinal += remise;
-      }
-  }*/ //Je ne pense pas que cette fonction soit utile
+
+
+	@Override
+	public String toString() {
+		return "Achat [identifiant=" + identifiant + ", prixDépart=" + prixDépart + ", prixFinal=" + prixFinal
+				+ ", date=" + date + ", menage=" + menage.getIdentifiant() + ", commerce=" + commerce.getNom() + ", listeBonsUtilisés="
+				+ listeBonsUtilisés + "]";
+	}
   
     
- /* public void appliquerBonsUtilisés() {
-      double remiseTotale = 0;
-      for (Bon bon : listeBonsUtilisés) {
-          remiseTotale += bon.getValeur();
-      }
-      prixFinal = prixDépart - remiseTotale;
-      if (prixFinal < 0) {
-          prixFinal = 0;
-      }
-  } //CalculPrixFinal();*/ //Pas utile car en ajoutant les bon le prix final est directement calculer
-  
+    
 }  

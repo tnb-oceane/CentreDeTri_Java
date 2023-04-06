@@ -38,6 +38,14 @@ public class PoubelleVerte extends PoubelleIntelligente {
 		double point = this.verifierTypeDechet(listeDechet)*this.centredetri.getPointParGrammeDechet();
 		return (int)point;
 	}
+	
+	@Override
+	public String toString() {
+		return "PoubelleBleue [centredetri=" + centredetri.getNom() + ", identifiant=" + identifiant + ", latitude=" + latitude
+				+ ", longitude=" + longitude + ", quartier=" + quartier + ", CapacitéMaxTotal=" + CapacitéMaxTotal
+				+ ", CapacitéActuelleTotal=" + CapacitéActuelleTotal + ", placer=" + placer + ", listeDéchet="
+				+ listeDéchet + ", listeMénages=" + listeMénages + "]";
+	}
 
 
 }

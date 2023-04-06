@@ -109,14 +109,7 @@ public class Ménage {
 	
 	
 
-  /*public boolean creerCompte(String motDePasse) {
-      if (motDePasseValid(motDePasse)) {
-          this.motDePasse = motDePasse;
-          return true;
-      } else {
-          return false;
-      }
-  }*/ //Lorsque l'on crée un compte on y attribut un mot de passe et on obtiens un code d'accès du centre de tri
+  //Lorsque l'on crée un compte on y attribut un mot de passe et on obtiens un code d'accès du centre de tri
 	public boolean creerCompte(String motDePasse,CentreDeTri centredetri) {
 		if (this.codeAcces != 0) {
 			return false;//Le ménage à déja un compte
@@ -132,20 +125,7 @@ public class Ménage {
 	}
 
 
-
-
-
-	/*public boolean acheterBon(int idBon) {
-	    //  Trouvez le Bon dans la liste des Bons disponibles
-	    for (Bon bon : Bon.getListeBonsDisponibles()) {
-	        if (bon.getIdentifiant() == idBon && this.point >= bon.getPrixBon()) {
-	            this.point -= bon.getPrixBon();
-	            this.listeBons.add(bon);
-	            return true;
-	        }
-	    }
-	    return false;
-	}*///Ta fonction est correcte j'ai juste remplacer idBon par Bon pour rendre  ça plus simple
+	
 	public boolean acheterBon(Bon bon) {
 		if (this.point >= bon.getPrixBon()) {
 			this.point -= bon.getPrixBon();
@@ -156,22 +136,6 @@ public class Ménage {
 	}
 	
 	
-
-	/*public boolean utiliserBon(int idBon, int idAchat) {
-	    // Trouvez le Bon dans la liste des Bons du Ménage et appliquez-le à l'Achat.
-	    for (Bon bon : this.listeBons) {
-	        if (bon.getIdentifiant() == idBon) {
-	            for (Achat achat : this.listeAchats) {
-	                if (achat.getIdentifiant() == idAchat) {
-	                    achat.ajouterBonUtilisé(bon);
-	                    this.listeBons.remove(bon);
-	                    return true;
-	                }
-	            }
-	        }
-	    }
-	    return false;
-	}*///Une fois utilisé le bon n'est plus actif mais il est toujours dans la liste des bons du ménage
 	public boolean utiliserBon(Bon bon, Achat achat) {
 		if (!bon.isActif()) {
 			return false;//Bon non actif donc inutilisable
@@ -182,20 +146,7 @@ public class Ménage {
 	}
 
 
-	/*public boolean jeterDechet(ArrayList<Déchet> dechets) {
-	  // Ajoutez des objets Déchet à la Poubelle associée et mettez à jour les points.
-	  CentreDeTri centreDeTri = getCentreDeTri();
-	  for (Déchet dechet : dechets) {
-	      PoubelleIntelligente poubelle = centreDeTri.getPoubelleByType(dechet.getType());
-	      if (poubelle != null) {
-	          poubelle.ajouterDechet(dechet);
-	          this.point += dechet.getPoints();
-	      } else {
-	          return false;
-	      }
-	  }
-	  return true;
-	}*/ //Je n'ai pas compris ce que fait ta fonction, elle est plus simple a faire si on ajoute la poubelle dans les attributs car le ménage doit crééer un dépot
+	
 	public boolean jeterDechet(ArrayList<Déchet> dechets, PoubelleIntelligente poubelle) {
 		if (!PoubelleIntelligente.getListeCodeAccès().contains(this.codeAcces)) {
 			return false; //Le ménage n'a pas de compte, elle n'est pas identifier
@@ -206,8 +157,12 @@ public class Ménage {
 		int pointTransaction = poubelle.attribuerPoint(dechets);
 		new Dépot(dechets, this, poubelle,pointTransaction);
 		this.point += pointTransaction;
-		this.listePoubelles.add(poubelle);
-		poubelle.getListeMénages().add(this);//On ajoute le ménage à la liste des ménage ayant utilisé cette poubelle
+		if (!this.listePoubelles.contains(poubelle)) {
+			this.listePoubelles.add(poubelle);
+		}
+		if (!poubelle.getListeMénages().contains(this)) {
+			poubelle.getListeMénages().add(this);//On ajoute le ménage à la liste des ménage ayant utilisé cette poubelle
+		}
 		return true;	
 	}
 
@@ -220,6 +175,17 @@ public class Ménage {
 		}
 		
 	}
+
+
+	@Override
+	public String toString() {
+		return "Ménage [identifiant=" + identifiant + ", motDePasse=" + motDePasse + ", codeAcces=" + codeAcces
+				+ ", point=" + point + ", listeBons=" + listeBons + ", centredetri=" + centredetri.getNom()
+				+ ", commercePartenaire=" + commercePartenaire + ", listePoubelles=" + listePoubelles + ", listeAchats="
+				+ listeAchats + ", listeDépots=" + listeDépots + "]";
+	}
+	
+	
 	
 }
 

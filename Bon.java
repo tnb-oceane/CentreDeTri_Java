@@ -27,9 +27,6 @@ public class Bon {
     
     protected static long suiviIdentifiant = 1;
 
-    
-
-	
 	
 
 
@@ -49,7 +46,7 @@ public class Bon {
 		
 		suiviIdentifiant++;
 		
-		//this.commerce.getBonsPublier().add(this);
+		this.commerce.getListeBons().add(this);
 	}
 
 
@@ -96,7 +93,7 @@ public class Bon {
 	}
 
 	public boolean isActif() {
-		return actif;
+		return this.verifierBon();
 	}
 
 	public static long getSuiviIdentifiant() {
@@ -116,19 +113,26 @@ public class Bon {
 	}
 
 	   
+	/*Pour etre utilisable, le bon doit être actif, ne pas avoir dépassé la date limite et les produit concernés doivent toujours être vendu par le commerce*/
+   public boolean verifierBon() {
+       this.actif = actif && dateLimite.after(new Date()) && commerce.getListeCategorieProduitVendu().containsAll(listeProduitsConcernés);
+       return actif;
+    }
 
-   /* public boolean estUtilisable(Date date, String produit) {
-        return actif && !date.after(dateLimite) && (listeProduitsConcernés.isEmpty() || listeProduitsConcernés.contains(produit));
-    }*/ //Fonction pas utile car l'attribut actif nous donne déja si le bon est utilisable ou pas.
 
-    /*public boolean utiliser() {
-        if (actif) {
-            actif = false;
-            return true;
-        } else {
-            return false;
-        }
-    }*/ // Fonction inutile et trop longue on peut la remplacer par setActif(false);
+
+
+@Override
+public String toString() {
+	return "Bon [identifiant=" + identifiant + ", type=" + type + ", valeur=" + valeur + ", prixBon=" + prixBon
+			+ ", commerce=" + commerce.getNom() + ", menage=" + menage.getIdentifiant() + ", achat=" + achat.getIdentifiant() + ", dateEmission=" + dateEmission
+			+ ", dateLimite=" + dateLimite + ", listeProduitsConcernés=" + listeProduitsConcernés + ", actif=" + actif
+			+ "]";
+}
+   
+   
+   
+   
     
     
 }

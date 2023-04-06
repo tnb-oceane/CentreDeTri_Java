@@ -6,7 +6,6 @@ public class PoubelleBleue extends PoubelleIntelligente {
     
     public PoubelleBleue(CentreDeTri centre, long latitude, long longitude, String quartier, double capacitéMaxTotal) {
 		super(centre, latitude, longitude, quartier, capacitéMaxTotal);
-		// TODO Auto-generated constructor stub
 	}
 
 
@@ -40,6 +39,18 @@ public class PoubelleBleue extends PoubelleIntelligente {
 		double point = this.verifierTypeDechet(listeDechet)*this.centredetri.getPointParGrammeDechet();
 		return (int)point;
 	}
+
+
+
+	@Override
+	public String toString() {
+		return "PoubelleBleue [centredetri=" + centredetri.getNom() + ", identifiant=" + identifiant + ", latitude=" + latitude
+				+ ", longitude=" + longitude + ", quartier=" + quartier + ", CapacitéMaxTotal=" + CapacitéMaxTotal
+				+ ", CapacitéActuelleTotal=" + CapacitéActuelleTotal + ", placer=" + placer + ", listeDéchet="
+				+ listeDéchet + ", listeMénages=" + listeMénages + "]";
+	}
+	
+	
 	
 
 }

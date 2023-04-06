@@ -30,6 +30,9 @@ public class Dépot {
 		for (Déchet d : listeDechets) {
 			this.quantitéDechet += d.getPoids();
 		}
+		
+		poubelle.setCapacitéActuelleTotal(poubelle.CapacitéActuelleTotal-this.quantitéDechet);
+		
 		this.pointGagné = pointGagné;
 		this.listeDechets = listeDechets;
 		this.menage = menage;
@@ -76,6 +79,16 @@ public class Dépot {
 		return menage;
 	}
 
+
+
+	@Override
+	public String toString() {
+		return "Dépot [identifiant=" + identifiant + ", dateHeure=" + dateHeure + ", quantitéDechet=" + quantitéDechet
+				+ ", pointGagné=" + pointGagné + ", menage=" + menage.getIdentifiant() + ", poubelle=" + poubelle.getIdentifiant() + ", listeDechets="
+				+ listeDechets + "]";
+	}
+
+	
 }
 
 

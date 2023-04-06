@@ -46,6 +46,13 @@ public class Déchet {
 	public CentreDeTri getCentredetri() {
 		return centredetri;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Déchet [type=" + type + ", poids=" + poids + ", poubelleContientDechet=" + poubelleContientDechet.getIdentifiant()
+				+ ", depot=" + depot.getIdentifiant() + ", centredetri=" + centredetri.getNom() + "]";
+	}
 	
     
   
