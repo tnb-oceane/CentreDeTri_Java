@@ -84,3 +84,86 @@ public class Commerce
    
 }
 
+/*
+
+import java.time.Duration;
+import java.util.ArrayList;
+import java.util.Date;
+
+public class Commerce {
+    private String nom;
+    private ArrayList<String> listeCategorieProduitVendu;
+    private ArrayList<Contrat> listeContrats;
+    private ArrayList<Bon> listeBons;
+    private CentreDeTri centreTri;
+    private ArrayList<Menage> listeMenages;
+    private ArrayList<Achat> listeAchats;
+
+    public Commerce(String nom, ArrayList<String> listeCategorieProduitVendu) {
+        this.nom = nom;
+        this.listeCategorieProduitVendu = listeCategorieProduitVendu;
+        this.listeContrats = new ArrayList<Contrat>();
+        this.listeBons = new ArrayList<Bon>();
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public ArrayList<String> getListeCategorieProduitVendu() {
+        return listeCategorieProduitVendu;
+    }
+
+    public ArrayList<Contrat> getListeContrats() {
+        return listeContrats;
+    }
+
+    public ArrayList<Bon> getListeBons() {
+        return listeBons;
+    }
+
+    public boolean renouvelerContrat(int idContrat) {
+        for (Contrat contrat : listeContrats) {
+            if (contrat.getIdentifiant() == idContrat) {
+                return contrat.renouvelerContrat();
+            }
+        }
+        return false;
+    }
+
+    public boolean publierBon(TypeBon typeBon, double valeurBon, int prixBon, int idContratAssocie, ArrayList<String> categories, Duration dureeBon, int nombreBon, Date dateEmission, Date dateLimite) {
+        Contrat contratAssocie = null;
+        for (Contrat contrat : listeContrats) {
+            if (contrat.getIdentifiant() == idContratAssocie) {
+                contratAssocie = contrat;
+                break;
+            }
+        }
+
+        if (contratAssocie == null) {
+            return false;
+        }
+
+        for (int i = 0; i < nombreBon; i++) {
+            Bon nouveauBon = new Bon(typeBon, valeurBon, prixBon, this, dateEmission, dateLimite, categories, true);
+            listeBons.add(nouveauBon);
+        }
+
+        return true;
+    }
+
+    public boolean ajouterCategorie(String categorie) {
+        if (!listeCategorieProduitVendu.contains(categorie)) {
+            listeCategorieProduitVendu.add(categorie);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean supprimerCategorie(String categorie) {
+        return listeCategorieProduitVendu.remove(categorie);
+    }
+}
+
+
+*/
