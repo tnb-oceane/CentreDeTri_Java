@@ -1,39 +1,36 @@
 package classes_projet;
-
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.*;
 
 public class TestAchat {
 
     public static void main(String[] args) {
-        // Créer un ménage
-        Ménage menage1 = new Ménage(1, 3);
+    	
+        Ménage menage1 = new Ménage();
         
-        // Créer un commerce
-        Commerce commerce1 = new Commerce("COM1", "Boulangerie");
+        ArrayList<String> categories = new ArrayList<>();
+        categories.add("Boulangerie");
+        Commerce commerce1 = new Commerce("COM1", categories);
+
         
-        // Créer un achat
         Achat achat1 = new Achat(15, menage1, commerce1);
         
-        // Afficher les informations de l'achat
         System.out.println(achat1.toString());
         
-        // Créer une liste de produits concernés
 		ArrayList<String> produitsConcernés = new ArrayList<>();
 		produitsConcernés.add("Pain");
 		produitsConcernés.add("Croissant");
 
-		// Créer une date d'émission et une date limite
 		Date dateEmission = new Date();
-		Date dateLimite = new Date(dateEmission.getTime() + (1000 * 60 * 60 * 24 * 7)); // Date limite dans une semaine
-
-		// Créer un bon
-		Bon bon1 = new Bon(TypeBon.REMISE, 5, 10, commerce1, dateEmission, dateLimite, produitsConcernés, true);
+		Date dateLimite = new Date(dateEmission.getTime() + (1000 * 60 * 60 * 24 * 7)); 
+		Bon bon1 = new Bon(TypeBon.REDUCTION, 5, 10, commerce1, dateEmission, dateLimite, produitsConcernés, true);
         
-        // Ajouter un bon utilisé à l'achat
         achat1.ajouterBonUtilisé(bon1);
         
-        // Afficher les informations de l'achat après l'ajout du bon
-        System.out.println(achat1.toString());
+        System.out.println("Achat [identifiant=" + achat1.getIdentifiant() + ", prixDépart=" + achat1.getPrixDépart()
+        + ", prixFinal=" + achat1.getPrixFinal() + ", date=" + achat1.getDate() + ", menage=" + achat1.getMenage().getIdentifiant()
+        + ", commerce=" + achat1.getCommerce().getNom() + ", listeBonsUtilisés=" + achat1.listeBonsToString() + "]");
+
+
+
     }
 }
