@@ -15,7 +15,7 @@ public class Dépot {
     
     private PoubelleIntelligente poubelle;
 
-    private static long suiviIdentifiant;
+    private static long suiviIdentifiant = 1;
     
     /*Les déchets jeter lors du dépot*/
     private ArrayList<Déchet> listeDechets;
@@ -43,6 +43,10 @@ public class Dépot {
 		
 		this.menage.getListeDépots().add(this);
 		this.poubelle.getListeDépots().add(this);
+		
+		//Lors du dépot on mets les dechets dans la poubelle
+		poubelle.getListeDéchet().addAll(listeDechets);
+		
 	}
     
     

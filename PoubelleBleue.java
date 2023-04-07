@@ -28,7 +28,7 @@ public class PoubelleBleue extends PoubelleIntelligente {
 				compteurPénalité+=d.getPoids();
 			}
 			else {
-				point++;
+				point+=d.getPoids();
 			}
 		}
 		return (point - compteurPénalité);

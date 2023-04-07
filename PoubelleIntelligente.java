@@ -30,7 +30,7 @@ public abstract class PoubelleIntelligente {
     
     protected ArrayList<Ménage> listeMénages;
     
-    private static ArrayList<Integer> listeCodeAccès;
+    private static ArrayList<Integer> listeCodeAccès = new ArrayList<Integer>();
 
     
     
@@ -126,6 +126,8 @@ public abstract class PoubelleIntelligente {
 
 
 
+	
+	
 	/*On vérifie que le code du Ménage exise bien dans la liste des code d'accès*/
     public boolean identifierUtilisateur(int codeAccès) {
         return listeCodeAccès.contains(codeAccès);

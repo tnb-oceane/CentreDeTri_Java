@@ -4,7 +4,7 @@ import java.util.*;
 public class PoubelleClassique extends PoubelleIntelligente {
 
 	public PoubelleClassique(CentreDeTri centre, long latitude, long longitude, String quartier,
-			double capacitéMaxTotal, double capacitéMaxAutre) {
+			double capacitéMaxTotal) {
 		super(centre, latitude, longitude, quartier, capacitéMaxTotal);
 	}
 
@@ -28,7 +28,7 @@ public class PoubelleClassique extends PoubelleIntelligente {
 				compteurPénalité+=d.getPoids();
 			}
 			else {
-				point++;
+				point+=d.getPoids();
 			}
 		}
 		return (point - compteurPénalité);
@@ -43,7 +43,7 @@ public class PoubelleClassique extends PoubelleIntelligente {
 	
 	@Override
 	public String toString() {
-		return "PoubelleBleue [centredetri=" + centredetri.getNom() + ", identifiant=" + identifiant + ", latitude=" + latitude
+		return "PoubelleClassique [centredetri=" + centredetri.getNom() + ", identifiant=" + identifiant + ", latitude=" + latitude
 				+ ", longitude=" + longitude + ", quartier=" + quartier + ", CapacitéMaxTotal=" + CapacitéMaxTotal
 				+ ", CapacitéActuelleTotal=" + CapacitéActuelleTotal + ", placer=" + placer + ", listeDéchet="
 				+ listeDéchet + ", listeMénages=" + listeMénages + "]";

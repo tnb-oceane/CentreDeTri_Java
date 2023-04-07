@@ -28,7 +28,7 @@ public class Contrat {
    
 
     public Contrat(Date dateDebut,Date dateExpiration, double prix, ArrayList<String> listeCategorie,
-                   int reductionEnPoint, int achatEnPoint, ArrayList<TypeBon> typeBonAdmissible, Commerce commerce) { //si dans reduc on met 100, ça veut dire que pour ce contrat il faudra 100 points pour avoir une réduction de 1%, pour achat : 100 voudra dire 100 points pour 1 euro
+                   int reductionEnPoint, int achatEnPoint, ArrayList<TypeBon> typeBonAdmissible,CentreDeTri centredetri, Commerce commerce) { //si dans reduc on met 100, ça veut dire que pour ce contrat il faudra 100 points pour avoir une réduction de 1%, pour achat : 100 voudra dire 100 points pour 1 euro
         this.identifiant = suiviIdentifiant;
         this.dateDebut = dateDebut;
         this.dateExpiration = dateExpiration;
@@ -38,9 +38,12 @@ public class Contrat {
         this.achatEnPoint = achatEnPoint;
         this.typeBonAdmissible = typeBonAdmissible;
         this.commerce = commerce;
+        this.centredetri = centredetri;
         suiviIdentifiant++;
-        this.centredetri.getListeContrats().add(this); //on ajoute ce contrat dans la liste de contrats du centre de tri.
+        
+        //on ajoute ce contrat dans la liste de contrats du commerce et du centre de tri.
         this.commerce.getListeContrats().add(this);
+        this.centredetri.getListeContrats().add(this);
     }
 
     public boolean renouvelerContrat()

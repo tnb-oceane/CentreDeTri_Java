@@ -88,8 +88,17 @@ public class CentreDeTri {
 
 
 	/*supprime la notification envoyée par une poubelle*/
-    public boolean supprimerNotification(PoubelleIntelligente poubelle) {/*idPoubelle au lieu de poubelle*/
-        return this.notification.remove(poubelle);
+    public boolean supprimerNotification(long idPoubelle) {
+    	PoubelleIntelligente poubelle = null;
+    	for (PoubelleIntelligente p: this.listePoubelles) {
+    		if (p.getIdentifiant() == idPoubelle) {
+    			poubelle = p;
+    		}
+    	}
+    	if(poubelle == null) {
+    		return false; //cette poubelle n'existe pas
+    	}
+    	return this.notification.remove(poubelle);
     }
     
     /*supprime toutes les notification*/
@@ -109,28 +118,43 @@ public class CentreDeTri {
     }
 
     public boolean supprimerQuartier(String quartier) {
+    	this.collecterDechet(quartier);
+    	for(int i=0;i< this.listePoubelles.size();i++) {
+    		if (this.listePoubelles.get(i).getQuartier()==quartier) {
+    			this.supprimerPoubelle(this.listePoubelles.get(i).getIdentifiant());
+    		}
+    	}
         return this.listeQuartierDesservie.remove(quartier);
     }
 
     
-    public boolean ajouterPoubelleBleue(long latitude, long longitude, String quartier, double capacitéMaxPapier) {
-    	return this.listePoubelles.add(new PoubelleBleue(this, longitude, latitude, quartier, capacitéMaxPapier));	
+    public void ajouterPoubelleBleue(long latitude, long longitude, String quartier, double capacitéMaxPapier) {
+    	 new PoubelleBleue(this, latitude, longitude, quartier, capacitéMaxPapier);	
     }
     
-    public boolean ajouterPoubelleVerte(long latitude, long longitude, String quartier, double capacitéMaxVerre) {
-    	return this.listePoubelles.add(new PoubelleVerte(this, longitude, latitude, quartier, capacitéMaxVerre));	
+    public void ajouterPoubelleVerte(long latitude, long longitude, String quartier, double capacitéMaxVerre) {
+    	new PoubelleVerte(this, latitude, longitude, quartier, capacitéMaxVerre);	
     }
     
-    public boolean ajouterPoubelleClassique(long latitude, long longitude, String quartier, double capacitéMaxAutre) {
-    	return this.listePoubelles.add(new PoubelleBleue(this, longitude, latitude, quartier, capacitéMaxAutre));
+    public void ajouterPoubelleClassique(long latitude, long longitude, String quartier, double capacitéMaxAutre) {
+    	new PoubelleClassique(this, latitude, longitude, quartier, capacitéMaxAutre);
     }
     
-    public boolean ajouterPoubelleJaune(long latitude, long longitude, String quartier, double capacitéMaxAutre) {
-    	return this.listePoubelles.add(new PoubelleJaune(this, longitude, latitude, quartier, capacitéMaxAutre));
+    public void ajouterPoubelleJaune(long latitude, long longitude, String quartier, double capacitéMaxAutre) {
+    	new PoubelleJaune(this, latitude, longitude, quartier, capacitéMaxAutre);
     }
 
 
-    public boolean supprimerPoubelle(PoubelleIntelligente poubelle) {
+    public boolean supprimerPoubelle(long idPoubelle) {
+    	PoubelleIntelligente poubelle = null;
+    	for (PoubelleIntelligente p: this.listePoubelles) {
+    		if (p.getIdentifiant() == idPoubelle) {
+    			poubelle = p;
+    		}
+    	}
+    	if(poubelle == null) {
+    		return false; //cette poubelle n'existe pas
+    	}
     	if(poubelle.placer) {
     		return false;//la poubelle est dans son quartier il faut d'abord la ramener au centre de tri
     	}
@@ -197,17 +221,17 @@ public class CentreDeTri {
     }
 
 
-    public boolean creerContrat(Date dateDebut,Date dateExpiration, double prix, ArrayList<String> listeCategorie,
+    public void creerContrat(Date dateDebut,Date dateExpiration, double prix, ArrayList<String> listeCategorie,
             int reductionEnPoint, int achatEnPoint, ArrayList<TypeBon> typeBonAdmissible, Commerce commerce) {
-        return this.listeContrats.add(new Contrat(dateDebut,dateExpiration,prix,listeCategorie,reductionEnPoint,achatEnPoint,typeBonAdmissible,commerce));
+        new Contrat(dateDebut,dateExpiration,prix,listeCategorie,reductionEnPoint,achatEnPoint,typeBonAdmissible,this,commerce);
     }
     
 
     public void faireStatistique() {
-       System.out.println("Nombre de foyer avec compte " + this.listeMénageAvecCompte.size());
-       System.out.println("liste des commerces partenaires  " + this.listeCommercePartenaire);
-       System.out.println("Nombre de contrat " + this.listeContrats.size());
-       System.out.println("Quantité de dechet collecte  " + this.listeDechets.size());
+       System.out.println("Nombre de foyer avec compte : " + this.listeMénageAvecCompte.size());
+       System.out.println("Liste des commerces partenaires : " + this.listeCommercePartenaire);
+       System.out.println("Nombre de contrat : " + this.listeContrats.size());
+       System.out.println("Quantite de dechet collecte : " + this.listeDechets.size());
        
     }
 

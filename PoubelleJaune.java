@@ -31,7 +31,7 @@ public class PoubelleJaune extends PoubelleIntelligente {
 				compteurPénalité+=d.getPoids();
 			}
 			else {
-				point++;
+				point+=d.getPoids();
 			}
 		}
 		return (point - compteurPénalité);
@@ -45,7 +45,7 @@ public class PoubelleJaune extends PoubelleIntelligente {
 
 	@Override
 	public String toString() {
-		return "PoubelleBleue [centredetri=" + centredetri.getNom() + ", identifiant=" + identifiant + ", latitude=" + latitude
+		return "PoubelleJaune [centredetri=" + centredetri.getNom() + ", identifiant=" + identifiant + ", latitude=" + latitude
 				+ ", longitude=" + longitude + ", quartier=" + quartier + ", CapacitéMaxTotal=" + CapacitéMaxTotal
 				+ ", CapacitéActuelleTotal=" + CapacitéActuelleTotal + ", placer=" + placer + ", listeDéchet="
 				+ listeDéchet + ", listeMénages=" + listeMénages + "]";

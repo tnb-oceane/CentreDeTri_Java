@@ -20,7 +20,7 @@ public class Ménage {
     
     private ArrayList<PoubelleIntelligente> listePoubelles;
     
-    private static long suiviIdentifiant = 0;
+    private static long suiviIdentifiant = 1;
     
     private ArrayList<Achat> listeAchats;
     
@@ -105,6 +105,7 @@ public class Ménage {
     		this.obtenirCodeAccès();
     	}
     	this.codeAcces = r;
+    	PoubelleIntelligente.getListeCodeAccès().add(r);
     }
 	
 	
@@ -115,6 +116,7 @@ public class Ménage {
 			return false;//Le ménage à déja un compte
 		}
 		if (!this.motDePasseValid(motDePasse)) {
+			System.out.println("Le mot de passe doit faire au moins 8 caractères");
 			return false;//mot de passe non valide
 		}
 		this.motDePasse = motDePasse;
@@ -148,7 +150,7 @@ public class Ménage {
 
 	
 	public boolean jeterDechet(ArrayList<Déchet> dechets, PoubelleIntelligente poubelle) {
-		if (!PoubelleIntelligente.getListeCodeAccès().contains(this.codeAcces)) {
+		if (!poubelle.identifierUtilisateur(codeAcces)) {
 			return false; //Le ménage n'a pas de compte, elle n'est pas identifier
 		}
 		if (dechets.isEmpty()) {
