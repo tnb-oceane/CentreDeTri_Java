@@ -90,6 +90,19 @@ public class Achat {
           }
       }
     }
+    
+    public String listeBonsToString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for (int i = 0; i < listeBonsUtilisés.size(); i++) {
+            sb.append(listeBonsUtilisés.get(i).getIdentifiant());
+            if (i < listeBonsUtilisés.size() - 1) {
+                sb.append(", ");
+            }
+        }
+        sb.append("]");
+        return sb.toString();
+    }
 
 
 	@Override
