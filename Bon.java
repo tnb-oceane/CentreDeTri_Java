@@ -87,6 +87,9 @@ public class Bon {
 	public Date getDateLimite() {
 		return dateLimite;
 	}
+    public void setDateLimite(Date dateLimite) {
+        this.dateLimite = dateLimite;
+    }
 
 	public ArrayList<String> getListeProduitsConcernés() {
 		return listeProduitsConcernés;
@@ -122,14 +125,18 @@ public class Bon {
 
 
 
-@Override
-public String toString() {
-	return "Bon [identifiant=" + identifiant + ", type=" + type + ", valeur=" + valeur + ", prixBon=" + prixBon
-			+ ", commerce=" + commerce.getNom() + ", menage=" + menage.getIdentifiant() + ", achat=" + achat.getIdentifiant() + ", dateEmission=" + dateEmission
-			+ ", dateLimite=" + dateLimite + ", listeProduitsConcernés=" + listeProduitsConcernés + ", actif=" + actif
-			+ "]";
-}
-   
+   @Override
+   public String toString() {
+       return "Bon [identifiant=" + identifiant + ", type=" + type + ", valeur=" + valeur + ", prixBon=" + prixBon
+               + ", commerce=" + commerce.getNom() + ", menage=" + (menage != null ? menage.getIdentifiant() : "null") + ", achat=" + (achat != null ? achat.getIdentifiant() : "null") + ", dateEmission=" + dateEmission
+               + ", dateLimite=" + dateLimite + ", listeProduitsConcernés=" + listeProduitsConcernés + ", actif=" + actif
+               + "]";
+   }
+
+
+
+
+ 
    
    
    
