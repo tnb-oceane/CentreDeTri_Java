@@ -19,7 +19,7 @@ public class TestBon {
 		Date dateLimite = new Date(dateEmission.getTime() + (1000 * 60 * 60 * 24 * 7)); // Date limite dans une semaine
 		
 		// Créer un bon
-		Bon bon1 = new Bon(TypeBon.REMISE, 5, 10, commerce1, dateEmission, dateLimite, produitsConcernés, true);
+		Bon bon1 = new Bon(TypeBon.REDUCTION, 5, 10, commerce1, dateEmission, dateLimite, produitsConcernés, true);
 		
 		// Afficher les informations du bon
 		System.out.println(bon1.toString());
