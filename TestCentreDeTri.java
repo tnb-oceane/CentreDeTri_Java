@@ -54,6 +54,8 @@ public class TestCentreDeTri {
 		System.out.println(tri123.getNotification()+ "\n");
 		
 		//On crée un contrat
+		/*ArrayList<String> listeVide = new ArrayList<>();
+       		Commerce abc123 = new Commerce("ABC123", listeVide);*/
 		Commerce abc123 = new Commerce("ABC123", null);
 		tri123.creerContrat(new Date(), new Date(), 0, null, 0, 0, null,abc123);
 		System.out.println(tri123.getListeContrats()+ "\n");
