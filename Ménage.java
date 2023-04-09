@@ -61,7 +61,13 @@ public class Ménage {
 	public int getPoint() {
 		return point;
 	}
+	
+	public void setPoint(int i) {
+	    this.point = i;
 
+		
+	}
+	
 	public ArrayList<Bon> getListeBons() {
 		return listeBons;
 	}
@@ -186,6 +192,9 @@ public class Ménage {
 				+ ", commercePartenaire=" + commercePartenaire + ", listePoubelles=" + listePoubelles + ", listeAchats="
 				+ listeAchats + ", listeDépots=" + listeDépots + "]";
 	}
+
+
+
 	
 	
 	
