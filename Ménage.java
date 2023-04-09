@@ -180,8 +180,8 @@ public class Ménage {
 	public void faireAchat(double prixDépart,Commerce commerce, ArrayList<Bon> listeBon,ArrayList<String> listeCatégorieConcernés) {
 		Achat achat = new Achat(prixDépart, this, commerce, listeCatégorieConcernés);
 		for (Bon bon: listeBon) {
-			this.utiliserBon(bon, achat);
 			achat.ajouterBonUtilisé(bon);
+			this.utiliserBon(bon, achat);
 		}
 		
 	}

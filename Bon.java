@@ -125,7 +125,7 @@ public class Bon {
 @Override
 public String toString() {
 	return "Bon [identifiant=" + identifiant + ", type=" + type + ", valeur=" + valeur + ", prixBon=" + prixBon
-			+ ", commerce=" + commerce.getNom() + ", menage=" + menage.getIdentifiant() + ", achat=" + achat.getIdentifiant() + ", dateEmission=" + dateEmission
+			+ ", commerce=" + commerce.getNom() + ", dateEmission=" + dateEmission
 			+ ", dateLimite=" + dateLimite + ", listeProduitsConcernes=" + listeCatégorieConcernés + ", actif=" + actif
 			+ "]";
 }
