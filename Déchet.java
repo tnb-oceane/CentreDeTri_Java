@@ -25,12 +25,9 @@ public class Déchet {
 	}
 
 	
-	
-
-
 	@Override
 	public String toString() {
-		return "Déchet [type=" + type + ", poids=" + poids + "]";
+		return "Dechet [type=" + type + ", poids=" + poids + "]";
 	}
 	
     

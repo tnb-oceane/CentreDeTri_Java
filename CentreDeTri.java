@@ -166,13 +166,12 @@ public class CentreDeTri {
     }
 
   
-    public boolean placerPoubelleDisponible() {
+    public void placerPoubelleDisponible() {
     	for (int i=0; i< this.listePoubelles.size();i++) {
     		if (!this.listePoubelles.get(i).isPlacer()) {
     			this.listePoubelles.get(i).setPlacer(true);
     		}
     	}
-        return true;
     }
 
     /*Ajoute une poubelle à un quartier si toutes les poubelles de ce quartier ne sont pas déjà placé dans le quartier*/
@@ -190,7 +189,7 @@ public class CentreDeTri {
     }
     
 
-    /*Supprime une poubelle d'un quartier si il y a des poubelles placé dans ce quartier*/
+    /*Ramène une poubelle d'un quartier si il y a des poubelles placé dans ce quartier*/
     public boolean supprimerPoubelleQuartier(String quartier) {
     	for (int i=0; i< this.listePoubelles.size();i++) {
     		if (this.listePoubelles.get(i).getQuartier()== quartier && this.listePoubelles.get(i).isPlacer()) {
@@ -203,7 +202,7 @@ public class CentreDeTri {
     
 
     /*Collecte tout les déchets d'un quartier : on ramène les poubelles au centre de tri et on les vides*/
-    public boolean collecterDechet(String quartier) {/*A compléter*/
+    public void collecterDechet(String quartier) {/*A compléter*/
     	for (int i=0; i< this.listePoubelles.size();i++) {
     		if (this.listePoubelles.get(i).getQuartier()== quartier && this.listePoubelles.get(i).isPlacer()) {
     			this.listePoubelles.get(i).setPlacer(false);//On ramene au la poubelle au centre de tri
@@ -211,7 +210,6 @@ public class CentreDeTri {
     			this.listePoubelles.get(i).viderPoubelle();//on vide la poubelle
     		}
     	}
-        return true;
     }
     
     

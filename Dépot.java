@@ -87,8 +87,8 @@ public class Dépot {
 
 	@Override
 	public String toString() {
-		return "Dépot [identifiant=" + identifiant + ", dateHeure=" + dateHeure + ", quantitéDechet=" + quantitéDechet
-				+ ", pointGagné=" + pointGagné + ", menage=" + menage.getIdentifiant() + ", poubelle=" + poubelle.getIdentifiant() + ", listeDechets="
+		return "Depot [identifiant=" + identifiant + ", dateHeure=" + dateHeure + ", quantiteDechet=" + quantitéDechet
+				+ ", pointGagne=" + pointGagné + ", menage=" + menage.getIdentifiant() + ", poubelle=" + poubelle.getIdentifiant() + ", listeDechets="
 				+ listeDechets + "]";
 	}
 

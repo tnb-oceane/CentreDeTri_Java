@@ -46,9 +46,9 @@ public class PoubelleJaune extends PoubelleIntelligente {
 	@Override
 	public String toString() {
 		return "PoubelleJaune [centredetri=" + centredetri.getNom() + ", identifiant=" + identifiant + ", latitude=" + latitude
-				+ ", longitude=" + longitude + ", quartier=" + quartier + ", CapacitéMaxTotal=" + CapacitéMaxTotal
-				+ ", CapacitéActuelleTotal=" + CapacitéActuelleTotal + ", placer=" + placer + ", listeDéchet="
-				+ listeDéchet + ", listeMénages=" + listeMénages + "]";
+				+ ", longitude=" + longitude + ", quartier=" + quartier + ", CapaciteMaxTotal=" + CapacitéMaxTotal
+				+ ", CapaciteActuelleTotal=" + CapacitéActuelleTotal + ", placer=" + placer + ", listeDechet="
+				+ listeDéchet + ", listeMenages=" + listeMénages + "]";
 	}
 
 }

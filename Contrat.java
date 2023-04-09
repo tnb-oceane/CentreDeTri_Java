@@ -46,14 +46,14 @@ public class Contrat {
         this.centredetri.getListeContrats().add(this);
     }
 
-    public boolean renouvelerContrat()
+    public boolean renouvelerContrat(int mois)
     {
         // Vérifier si le contrat est expiré
         if (this.dateExpiration.before(new Date())) {
             // Calculer la nouvelle date d'expiration
             Calendar calendar = Calendar.getInstance(); // Cela permet d'obtenir la date et l'heure actuelles
             calendar.setTime(this.dateExpiration); //permet d'initialiser l'objet calendar avec la date d'expiration du contrat en cours.
-            calendar.add(Calendar.MONTH, 1); // Ajouter un mois
+            calendar.add(Calendar.MONTH, mois); // Ajouter un mois
             this.dateExpiration = calendar.getTime(); //mettre à jour la date d'expiration du contrat 
             return true;
         } 

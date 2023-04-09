@@ -62,12 +62,10 @@ public class Ménage {
 		return point;
 	}
 	
-	public void setPoint(int i) {
-	    this.point = i;
-
-		
+	public void setPoint(int point) {
+		this.point = point;
 	}
-	
+
 	public ArrayList<Bon> getListeBons() {
 		return listeBons;
 	}
@@ -138,15 +136,19 @@ public class Ménage {
 		if (this.point >= bon.getPrixBon()) {
 			this.point -= bon.getPrixBon();
             this.listeBons.add(bon);
+            bon.setMenage(this);
             return true;
         }
-    return false;
+		return false;
 	}
 	
 	
 	public boolean utiliserBon(Bon bon, Achat achat) {
 		if (!bon.isActif()) {
 			return false;//Bon non actif donc inutilisable
+		}
+		if (!bon.getListeCatégorieConcernés().containsAll(achat.getListeCatégorieConcernés())) {
+			return false;//Le bon ne couvre pas toutes les catégories achetés
 		}
 		achat.getListeBonsUtilisés().add(bon);
 		bon.setActif(false);// après l'avoir utilisé on désactive le bon
@@ -175,8 +177,8 @@ public class Ménage {
 	}
 
 	
-	public void faireAchat(double prixDépart,Commerce commerce, ArrayList<Bon> listeBon) {
-		Achat achat = new Achat(prixDépart, this, commerce);
+	public void faireAchat(double prixDépart,Commerce commerce, ArrayList<Bon> listeBon,ArrayList<String> listeCatégorieConcernés) {
+		Achat achat = new Achat(prixDépart, this, commerce, listeCatégorieConcernés);
 		for (Bon bon: listeBon) {
 			this.utiliserBon(bon, achat);
 			achat.ajouterBonUtilisé(bon);
@@ -187,14 +189,11 @@ public class Ménage {
 
 	@Override
 	public String toString() {
-		return "Ménage [identifiant=" + identifiant + ", motDePasse=" + motDePasse + ", codeAcces=" + codeAcces
+		return "Menage [identifiant=" + identifiant + ", motDePasse=" + motDePasse + ", codeAcces=" + codeAcces
 				+ ", point=" + point + ", listeBons=" + listeBons + ", centredetri=" + centredetri.getNom()
 				+ ", commercePartenaire=" + commercePartenaire + ", listePoubelles=" + listePoubelles + ", listeAchats="
-				+ listeAchats + ", listeDépots=" + listeDépots + "]";
+				+ listeAchats + ", listeDepots=" + listeDépots + "]";
 	}
-
-
-
 	
 	
 	

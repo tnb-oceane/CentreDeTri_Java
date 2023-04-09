@@ -21,7 +21,7 @@ public class Bon {
     
     private Date dateLimite;
     
-    private ArrayList<String> listeProduitsConcernés;
+    private ArrayList<String> listeCatégorieConcernés;
     
     private boolean actif;
     
@@ -30,7 +30,7 @@ public class Bon {
 	
 
 
-    public Bon(TypeBon type, double valeur, int prixBon, Commerce commerce,Date dateEmission, Date dateLimite, ArrayList<String> listeProduitsConcernés, boolean actif) {
+    public Bon(TypeBon type, double valeur, int prixBon, Commerce commerce,Date dateEmission, Date dateLimite, ArrayList<String> listeCatégorieConcernés, boolean actif) {
 		super();
 		this.identifiant = suiviIdentifiant;
 		this.type = type;
@@ -41,7 +41,7 @@ public class Bon {
 		this.achat = null;
 		this.dateEmission = dateEmission;
 		this.dateLimite = dateLimite;
-		this.listeProduitsConcernés = listeProduitsConcernés;
+		this.listeCatégorieConcernés = listeCatégorieConcernés;
 		this.actif = actif;
 		
 		suiviIdentifiant++;
@@ -87,12 +87,9 @@ public class Bon {
 	public Date getDateLimite() {
 		return dateLimite;
 	}
-    public void setDateLimite(Date dateLimite) {
-        this.dateLimite = dateLimite;
-    }
 
-	public ArrayList<String> getListeProduitsConcernés() {
-		return listeProduitsConcernés;
+	public ArrayList<String> getListeCatégorieConcernés() {
+		return listeCatégorieConcernés;
 	}
 
 	public boolean isActif() {
@@ -118,25 +115,21 @@ public class Bon {
 	   
 	/*Pour etre utilisable, le bon doit être actif, ne pas avoir dépassé la date limite et les produit concernés doivent toujours être vendu par le commerce*/
    public boolean verifierBon() {
-       this.actif = actif && dateLimite.after(new Date()) && commerce.getListeCategorieProduitVendu().containsAll(listeProduitsConcernés);
+       this.actif = actif && dateLimite.after(new Date()) && commerce.getListeCategorieProduitVendu().containsAll(listeCatégorieConcernés);
        return actif;
     }
 
 
 
 
-   @Override
-   public String toString() {
-       return "Bon [identifiant=" + identifiant + ", type=" + type + ", valeur=" + valeur + ", prixBon=" + prixBon
-               + ", commerce=" + commerce.getNom() + ", menage=" + (menage != null ? menage.getIdentifiant() : "null") + ", achat=" + (achat != null ? achat.getIdentifiant() : "null") + ", dateEmission=" + dateEmission
-               + ", dateLimite=" + dateLimite + ", listeProduitsConcernés=" + listeProduitsConcernés + ", actif=" + actif
-               + "]";
-   }
-
-
-
-
- 
+@Override
+public String toString() {
+	return "Bon [identifiant=" + identifiant + ", type=" + type + ", valeur=" + valeur + ", prixBon=" + prixBon
+			+ ", commerce=" + commerce.getNom() + ", menage=" + menage.getIdentifiant() + ", achat=" + achat.getIdentifiant() + ", dateEmission=" + dateEmission
+			+ ", dateLimite=" + dateLimite + ", listeProduitsConcernes=" + listeCatégorieConcernés + ", actif=" + actif
+			+ "]";
+}
+   
    
    
    

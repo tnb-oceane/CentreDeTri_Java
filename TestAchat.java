@@ -3,34 +3,34 @@ import java.util.*;
 
 public class TestAchat {
 
-    public static void main(String[] args) {
-    	
-        Ménage menage1 = new Ménage();
+	public static void main(String[] args) {
+		//On crée un ménage
+		Ménage menage1 = new Ménage();
         
-        ArrayList<String> categories = new ArrayList<>();
+		//On crée une liste de catégorie et un commerce qui vend ces produits
+        ArrayList<String> categories = new ArrayList<String>();
         categories.add("Boulangerie");
         Commerce commerce1 = new Commerce("COM1", categories);
 
+        //On crée un achat
+        Achat achat1 = new Achat(15, menage1, commerce1,categories);
+        System.out.println(achat1 + "\n");
         
-        Achat achat1 = new Achat(15, menage1, commerce1);
-        
-        System.out.println(achat1.toString());
-        
-		ArrayList<String> produitsConcernés = new ArrayList<>();
-		produitsConcernés.add("Pain");
-		produitsConcernés.add("Croissant");
 
+		//On crée un bon valide
 		Date dateEmission = new Date();
 		Date dateLimite = new Date(dateEmission.getTime() + (1000 * 60 * 60 * 24 * 7)); 
-		Bon bon1 = new Bon(TypeBon.REDUCTION, 5, 10, commerce1, dateEmission, dateLimite, produitsConcernés, true);
+		Bon bon1 = new Bon(TypeBon.REDUCTION, 10, 100, commerce1, dateEmission, dateLimite, categories, true);
+		bon1.setMenage(menage1);
+		
         
+		//On affiche les changements de prix
         achat1.ajouterBonUtilisé(bon1);
-        
-        System.out.println("Achat [identifiant=" + achat1.getIdentifiant() + ", prixDépart=" + achat1.getPrixDépart()
-        + ", prixFinal=" + achat1.getPrixFinal() + ", date=" + achat1.getDate() + ", menage=" + achat1.getMenage().getIdentifiant()
-        + ", commerce=" + achat1.getCommerce().getNom() + ", listeBonsUtilisés=" + achat1.listeBonsToString() + "]");
+        System.out.println(achat1 + "\n");
 
+        //On ne peux utiliser un bon qu'une seule fois
+        achat1.ajouterBonUtilisé(bon1);
+        System.out.println(achat1 + "\n");
+	}
 
-
-    }
 }

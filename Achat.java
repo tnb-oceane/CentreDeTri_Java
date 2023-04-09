@@ -18,10 +18,12 @@ public class Achat {
     
     private ArrayList<Bon> listeBonsUtilisés;
     
+    private ArrayList<String> listeCatégorieConcernés;
+    
     protected static long suiviIdentifiant = 1;
     
     
-    public Achat(double prixDépart, Ménage menage, Commerce commerce) {
+    public Achat(double prixDépart, Ménage menage, Commerce commerce, ArrayList<String> listeCatégorieConcernés) {
         
 		this.identifiant = suiviIdentifiant;
         this.prixDépart = prixDépart;
@@ -30,6 +32,7 @@ public class Achat {
         this.menage = menage;
         this.commerce = commerce;
         this.listeBonsUtilisés = new ArrayList<Bon>();
+        this.listeCatégorieConcernés = listeCatégorieConcernés;
         
         suiviIdentifiant++;
         
@@ -70,9 +73,12 @@ public class Achat {
     	return suiviIdentifiant;
     }
     
-    
-    
-    public void ajouterBonUtilisé(Bon bon) {
+    public ArrayList<String> getListeCatégorieConcernés() {
+		return listeCatégorieConcernés;
+	}
+
+
+	public void ajouterBonUtilisé(Bon bon) {
       if (!listeBonsUtilisés.contains(bon)) {
           listeBonsUtilisés.add(bon);
           bon.setAchat(this);
@@ -82,7 +88,7 @@ public class Achat {
           		prixFinal -= remise;//Le bon d'achat retire une partie du prix final
           		break;
           	case REDUCTION:
-          		prixFinal *= 1+(remise/100);// le bon de réduction retire un pourcentage du prix final
+          		prixFinal *= 1-(remise/100);// le bon de réduction retire un pourcentage du prix final
           		break;
           }
           if (prixFinal < 0) {
@@ -90,25 +96,12 @@ public class Achat {
           }
       }
     }
-    
-    public String listeBonsToString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("[");
-        for (int i = 0; i < listeBonsUtilisés.size(); i++) {
-            sb.append(listeBonsUtilisés.get(i).getIdentifiant());
-            if (i < listeBonsUtilisés.size() - 1) {
-                sb.append(", ");
-            }
-        }
-        sb.append("]");
-        return sb.toString();
-    }
 
 
 	@Override
 	public String toString() {
-		return "Achat [identifiant=" + identifiant + ", prixDépart=" + prixDépart + ", prixFinal=" + prixFinal
-				+ ", date=" + date + ", menage=" + menage.getIdentifiant() + ", commerce=" + commerce.getNom() + ", listeBonsUtilisés="
+		return "Achat [identifiant=" + identifiant + ", prixDepart=" + prixDépart + ", prixFinal=" + prixFinal
+				+ ", date=" + date + ", menage=" + menage.getIdentifiant() + ", commerce=" + commerce.getNom() + ", listeBonsUtilises="
 				+ listeBonsUtilisés + "]";
 	}
   

@@ -39,7 +39,7 @@ public class TestPoubelleIntelligente {
 		System.out.println(listedechet);
 		menage.jeterDechet(listedechet, Pv);
 		System.out.println(menage.getListeDépots());
-		System.out.println("Capacité actuelle : "+Pv.getCapacitéActuelleTotal() +", Depot : "+Pv.getListeDépots()+ "\n");
+		System.out.println("Capacite actuelle : "+Pv.getCapacitéActuelleTotal() +", Depot : "+Pv.getListeDépots()+ "\n");
 		
 		//On calcule la quantité de dechet de type Verre
 		System.out.println(Pv.calculQuantité(Pv.getListeDépots().get(0), TypeDéchet.AUTRE));

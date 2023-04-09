@@ -76,13 +76,13 @@ public class Commerce {
 
 	
 
-	public boolean renouvelerContrat(int idContrat)
+	public boolean renouvelerContrat(int idContrat, int mois)
 	{
         for (Contrat contrat : listeContrats) //parcourir tous les contrats présents dans listeContrats de l'objet de la classe Commerce. ( comme en python qd on fait for k in L, et ici la liste reste statique )
         {
             if (contrat.getIdentifiant() == idContrat) //si l'identifiant du contrat est égal à l'identifiant du contrat passé en paramètre.
             {
-                return contrat.renouvelerContrat(); //appel de la méthode qui est dans la classe contrat
+                return contrat.renouvelerContrat(mois); //appel de la méthode qui est dans la classe contrat
             }
         }
         return false; //Si aucun contrat n'a été trouvé avec l'identifiant passé en paramètre
