@@ -1,4 +1,4 @@
-package classes_projet;
+package project_class;
 import java.util.*;
 
 public class Ménage {
@@ -150,7 +150,6 @@ public class Ménage {
 		if (!bon.getListeCatégorieConcernés().containsAll(achat.getListeCatégorieConcernés())) {
 			return false;//Le bon ne couvre pas toutes les catégories achetés
 		}
-		achat.getListeBonsUtilisés().add(bon);
 		bon.setActif(false);// après l'avoir utilisé on désactive le bon
 		return true;
 	}
@@ -164,9 +163,15 @@ public class Ménage {
 		if (dechets.isEmpty()) {
 			return false;//Le ménage n'a aucun déchets à jeter
 		}
+		if (poubelle.getCapacitéActuelleTotal()<=0) {
+			return false;//La poubelle est déja pleine
+		}
 		int pointTransaction = poubelle.attribuerPoint(dechets);
 		new Dépot(dechets, this, poubelle,pointTransaction);
 		this.point += pointTransaction;
+		if (this.point <=0) {
+			this.point=0;
+		}
 		if (!this.listePoubelles.contains(poubelle)) {
 			this.listePoubelles.add(poubelle);
 		}
@@ -180,8 +185,9 @@ public class Ménage {
 	public void faireAchat(double prixDépart,Commerce commerce, ArrayList<Bon> listeBon,ArrayList<String> listeCatégorieConcernés) {
 		Achat achat = new Achat(prixDépart, this, commerce, listeCatégorieConcernés);
 		for (Bon bon: listeBon) {
-			achat.ajouterBonUtilisé(bon);
-			this.utiliserBon(bon, achat);
+			if (this.utiliserBon(bon, achat)) {
+				achat.ajouterBonUtilisé(bon);
+			}
 		}
 		
 	}
@@ -190,9 +196,7 @@ public class Ménage {
 	@Override
 	public String toString() {
 		return "Menage [identifiant=" + identifiant + ", motDePasse=" + motDePasse + ", codeAcces=" + codeAcces
-				+ ", point=" + point + ", listeBons=" + listeBons + ", centredetri=" + centredetri.getNom()
-				+ ", commercePartenaire=" + commercePartenaire + ", listePoubelles=" + listePoubelles + ", listeAchats="
-				+ listeAchats + ", listeDepots=" + listeDépots + "]";
+				+ ", point=" + point  + "]";
 	}
 	
 	

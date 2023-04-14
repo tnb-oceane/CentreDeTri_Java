@@ -1,4 +1,4 @@
-package classes_projet;
+package project_class;
 import java.util.*;
 
 public class PoubelleClassique extends PoubelleIntelligente {
@@ -45,8 +45,7 @@ public class PoubelleClassique extends PoubelleIntelligente {
 	public String toString() {
 		return "PoubelleClassique [centredetri=" + centredetri.getNom() + ", identifiant=" + identifiant + ", latitude=" + latitude
 				+ ", longitude=" + longitude + ", quartier=" + quartier + ", CapaciteMaxTotal=" + CapacitéMaxTotal
-				+ ", CapaciteActuelleTotal=" + CapacitéActuelleTotal + ", placer=" + placer + ", listeDechet="
-				+ listeDéchet + ", listeMenages=" + listeMénages + "]";
+				+ ", CapaciteActuelleTotal=" + CapacitéActuelleTotal + ", placer=" + placer +  "]";
 	}
 	
 }

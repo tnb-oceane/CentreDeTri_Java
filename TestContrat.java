@@ -1,12 +1,15 @@
-package classes_projet;
+package project_test;
 import java.util.*;
+import project_class.*;
 
 public class TestContrat {
 
 	public static void main(String[] args) {
+		
 		// Création d'un centre de tri
         CentreDeTri centreDeTri = new CentreDeTri("Centre de tri 1", "avenue du parc", 2);
 
+        
         // Création d'une liste de catégories de produits vendus
         ArrayList<String> listeCategorieProduitVendu = new ArrayList<>();
         listeCategorieProduitVendu.add("metal");
@@ -21,12 +24,12 @@ public class TestContrat {
         typeBonAdmissible.add(TypeBon.ACHAT);
         typeBonAdmissible.add(TypeBon.REDUCTION);
 
+        
         //Création d'un objet Calendar pour la date de début
         Calendar calDebut = Calendar.getInstance(); //crée un nouvel objet Calendar en utilisant la méthode statique getInstance() de la classe Calendar. Cela renvoie un objet Calendar représentant la date et l'heure actuelles du système.
         calDebut.set(Calendar.YEAR, 2022); 
         calDebut.set(Calendar.MONTH, Calendar.NOVEMBER); 
         calDebut.set(Calendar.DAY_OF_MONTH, 1); 
-
         Date dateDebut = calDebut.getTime(); //ligne obtient la date de début sous forme d'objet Date en utilisant la méthode getTime() de l'objet Calendar. Cela renvoie un objet Date représentant la date de début spécifiée dans l'objet Calendar.
 
         // Création d'un objet Calendar pour la date de fin
@@ -34,39 +37,31 @@ public class TestContrat {
         calFin.set(Calendar.YEAR, 2023); 
         calFin.set(Calendar.MONTH, Calendar.APRIL); 
         calFin.set(Calendar.DAY_OF_MONTH, 22); 
-
-        // Obtention de la date de fin
         Date dateFin = calFin.getTime();
 
+        
         // Création d'un contrat avec les valeurs spécifiées
         Contrat contrat1 = new Contrat(dateDebut, dateFin, 100, listeCategorieProduitVendu, 100, 100,
         		typeBonAdmissible, centreDeTri, commerce);
-       
-        //Création d'un contrat expirer
-        Contrat contrat2 = new Contrat(new Date(), new Date(), 100, listeCategorieProduitVendu, 100, 100,
-        		typeBonAdmissible, centreDeTri, commerce);
-        
-        // Affichage des informations du contrat
+        System.out.println("Les caracteristiques du contrat1 sont :");
         System.out.println(contrat1 + "\n");
-
-        // Renouvellement de trois mois du contrat
-        boolean renouvellement = contrat1.renouvelerContrat(3);
-        if (renouvellement) {
-            System.out.println("Le contrat 1 a été renouvelé avec succès.\n");
-        } else {
-            System.out.println("Le contrat 1 n'a pas été renouvelé car il n'est pas expiré.\n");
-        }
+       
         
-        boolean renouvellement2 = contrat2.renouvelerContrat(3);
-        if (renouvellement2) {
-            System.out.println("Le contrat 2 a été renouvelé avec succès.\n");
-        } else {
-            System.out.println("Le contrat 2 n'a pas été renouvelé car il n'est pas expiré.\n");
-        }
+        //Création d'un contrat expirer
+        Contrat contrat2 = new Contrat(dateDebut, dateDebut, 100, listeCategorieProduitVendu, 100, 100,
+        		typeBonAdmissible, centreDeTri, commerce);
+        System.out.println("Les caracteristiques du contrat2 sont :");
+        System.out.println(contrat2 + "\n");
         
-        // Affichage des informations du contrat renouvellé
-        System.out.println(contrat2);
         
+        
+        // Renouvellement de trois mois des contrats
+        System.out.println("Le contrat1 a t-il ete renouvelle ? " + contrat1.renouvelerContrat(3));
+        System.out.println(contrat1 + "\n"); 
+        
+        System.out.println("Le contrat2 a t-il ete renouvelle ? " + contrat2.renouvelerContrat(3));
+        System.out.println(contrat2 + "\n"); 
+ 
 
 	}
 

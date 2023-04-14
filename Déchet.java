@@ -1,4 +1,4 @@
-package classes_projet;
+package project_class;
 
 public class Déchet {
 	

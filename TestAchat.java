@@ -1,5 +1,6 @@
-package classes_projet;
+package project_test;
 import java.util.*;
+import project_class.*;
 
 public class TestAchat {
 
@@ -14,6 +15,7 @@ public class TestAchat {
 
         //On crée un achat
         Achat achat1 = new Achat(15, menage1, commerce1,categories);
+        System.out.println("Les caracteristiques de achat1 sont :");
         System.out.println(achat1 + "\n");
         
 
@@ -21,14 +23,15 @@ public class TestAchat {
 		Date dateEmission = new Date();
 		Date dateLimite = new Date(dateEmission.getTime() + (1000 * 60 * 60 * 24 * 7)); 
 		Bon bon1 = new Bon(TypeBon.REDUCTION, 10, 100, commerce1, dateEmission, dateLimite, categories, true);
-		bon1.setMenage(menage1);
 		
         
 		//On affiche les changements de prix
         achat1.ajouterBonUtilisé(bon1);
+        System.out.println("On ajoute bon1 dans les caracteristiques de achat1 - le prix change :");
         System.out.println(achat1 + "\n");
 
         //On ne peux utiliser un bon qu'une seule fois
+        System.out.println("On ne peut utiliser un bon qu'une seule fois - le prix ne change pas :");
         achat1.ajouterBonUtilisé(bon1);
         System.out.println(achat1 + "\n");
 	}

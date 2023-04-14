@@ -1,4 +1,4 @@
-package classes_projet;
+package project_class;
 import java.util.*;
 
 
@@ -117,8 +117,7 @@ public class Contrat {
 				+ ", achatEnPoint=" + achatEnPoint + ", typeBonAdmissible=" + typeBonAdmissible + ", centredetri="
 				+ centredetri.getNom() + ", commerce=" + commerce.getNom() + "]";
 	}
-    
-    
+       
 
 }
 

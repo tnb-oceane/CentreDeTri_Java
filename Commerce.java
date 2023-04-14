@@ -1,4 +1,4 @@
-package classes_projet;
+package project_class;
 import java.util.*;
 
 public class Commerce {
@@ -109,7 +109,8 @@ public class Commerce {
       		prixBon = contratAssocie.getReductionEnPoint()*valeurBon;
       		break;
 		}
-		return this.listeBons.add(new Bon(typeBon,valeurBon,(int)prixBon,this,new Date(),dateExpiration,listeProduitsConcernés, true));
+		new Bon(typeBon,valeurBon,(int)prixBon,this,new Date(),dateExpiration,listeProduitsConcernés, true);
+		return true;
     }
 
 	
@@ -127,9 +128,7 @@ public class Commerce {
 
 	@Override
 	public String toString() {
-		return "Commerce [nom=" + nom + ", listeCategorieProduitVendu=" + listeCategorieProduitVendu
-				+ ", listeContrats=" + listeContrats + ", listeBons=" + listeBons + ", centreTri=" + centreTri.getNom()
-				+ ", listeMenages=" + listeMenages + ", listeAchats=" + listeAchats + "]";
+		return "Commerce [nom=" + nom + ", listeCategorieProduitVendu=" + listeCategorieProduitVendu + "]";
 	}
  
     

@@ -1,4 +1,4 @@
-package classes_projet;
+package project_class;
 import java.util.*;
 
 public class Dépot {	
@@ -32,6 +32,10 @@ public class Dépot {
 		}
 		
 		poubelle.setCapacitéActuelleTotal(poubelle.CapacitéActuelleTotal-this.quantitéDechet);
+		if (poubelle.getCapacitéActuelleTotal()<=0) {
+			poubelle.setCapacitéActuelleTotal(0);
+			poubelle.envoyerNotification();
+		}
 		
 		this.pointGagné = pointGagné;
 		this.listeDechets = listeDechets;
@@ -88,8 +92,7 @@ public class Dépot {
 	@Override
 	public String toString() {
 		return "Depot [identifiant=" + identifiant + ", dateHeure=" + dateHeure + ", quantiteDechet=" + quantitéDechet
-				+ ", pointGagne=" + pointGagné + ", menage=" + menage.getIdentifiant() + ", poubelle=" + poubelle.getIdentifiant() + ", listeDechets="
-				+ listeDechets + "]";
+				+ ", pointGagne=" + pointGagné + ", menage=" + menage.getIdentifiant() + ", poubelle=" + poubelle.getIdentifiant() + "]";
 	}
 
 	

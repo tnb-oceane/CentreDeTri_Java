@@ -1,4 +1,4 @@
-package classes_projet;
+package project_class;
 import java.util.*;
 
 public class CentreDeTri {
@@ -214,7 +214,7 @@ public class CentreDeTri {
     
     
     public boolean voirNotification() {
-    	System.out.println(this.notification);
+    	System.out.println(this.notification+"\n");
     	return this.supprimerNotification();
     }
 
@@ -239,11 +239,7 @@ public class CentreDeTri {
 
 	@Override
 	public String toString() {
-		return "CentreDeTri [nom=" + nom + ", adresse=" + adresse + ", listeQuartierDesservie=" + listeQuartierDesservie
-				+ ", listePoubelles=" + listePoubelles + ", notification=" + notification + ", listeMénageAvecCompte="
-				+ listeMénageAvecCompte + ", listeCommercePartenaire=" + listeCommercePartenaire + ", listeContrats="
-				+ listeContrats + ", listeDechets=" + listeDechets + ", pointParGrammeDechet=" + pointParGrammeDechet
-				+ "]";
+		return "CentreDeTri [nom=" + nom + ", adresse=" + adresse + ", pointParGrammeDechet=" + pointParGrammeDechet + ", notification=" + notification + "]";
 	}
 
    

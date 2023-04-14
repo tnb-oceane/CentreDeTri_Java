@@ -1,4 +1,4 @@
-package classes_projet;
+package project_class;
 import java.util.*;
 
 public class Bon {
@@ -126,9 +126,14 @@ public class Bon {
 public String toString() {
 	return "Bon [identifiant=" + identifiant + ", type=" + type + ", valeur=" + valeur + ", prixBon=" + prixBon
 			+ ", commerce=" + commerce.getNom() + ", dateEmission=" + dateEmission
-			+ ", dateLimite=" + dateLimite + ", listeProduitsConcernes=" + listeCatégorieConcernés + ", actif=" + actif
+			+ ", dateLimite=" + dateLimite + ", listeCategorieConcernes=" + listeCatégorieConcernés + ", actif=" + actif
 			+ "]";
 }
+
+
+
+
+   
    
    
    
